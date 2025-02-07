@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"  # For Python dependencies
+    directory: "/"  # Root directory
+    schedule:
+      interval: "daily"  # Check updates every day
+    open-pull-requests-limit: 5  # Limit PRs Dependabot can open
+    ignore:
+      - dependency-name: "requests"  # Example: Ignore specific package updates
