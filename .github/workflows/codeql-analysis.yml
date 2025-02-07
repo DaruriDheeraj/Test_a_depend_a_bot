@@ -1,0 +1,29 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  codeql:
+    name: Analyze code with CodeQL
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up CodeQL
+        uses: github/codeql-action/setup@v2
+
+      - name: Initialize CodeQL database
+        uses: github/codeql-action/autobuild@v2
+
+      - name: Perform CodeQL analysis
+        uses: github/codeql-action/analyze@v2
+
+      - name: Upload CodeQL results
+        uses: github/codeql-action/upload-sarif@v2
