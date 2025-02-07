@@ -1,11 +1,14 @@
-name: CodeQL
+name: CodeQL Analysis
 
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
-  workflow_dispatch:  # Allows manual trigger
+
+permissions:
+  contents: read  # Required to read code from the repository
+  security-events: write  # Required to create and update security alerts (for CodeQL results)
 
 jobs:
   codeql:
@@ -17,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up CodeQL
-        uses: github/codeql-action/setup@v2  # Correct version for v2 setup
+        uses: github/codeql-action/setup@v2
 
       - name: Initialize CodeQL database
         uses: github/codeql-action/autobuild@v2
