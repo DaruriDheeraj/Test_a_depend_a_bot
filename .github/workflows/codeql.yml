@@ -98,7 +98,7 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
     - name: Upload CodeQL Database
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: codeql-database-python
         path: /home/runner/work/_temp/codeql_databases/python.zip
