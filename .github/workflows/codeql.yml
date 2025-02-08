@@ -102,6 +102,8 @@ jobs:
       with:
         name: codeql-database-python
         path: /home/runner/work/_temp/codeql_databases/python.zip
+    - name: Ensure output directory exists
+      run: mkdir -p /home/runner/work/_temp/codeql_analysis/
     - name: Run CodeQL Analysis
       run: |
           "/opt/hostedtoolcache/CodeQL/2.20.4/x64/codeql/codeql" database analyze /home/runner/work/_temp/codeql_databases/python \
