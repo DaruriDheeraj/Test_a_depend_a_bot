@@ -7,8 +7,8 @@ on:
     branches: [main]
 
 permissions:
-  contents: read  # Required to read code from the repository
-  security-events: write  # Required to create and update security alerts (for CodeQL results)
+  contents: read
+  security-events: write  # Required for security scanning
 
 jobs:
   codeql:
@@ -19,10 +19,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up CodeQL
-        uses: github/codeql-action/setup@v2
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript  # Change based on your repo (e.g., java, python, etc.)
 
-      - name: Initialize CodeQL database
+      - name: Autobuild
         uses: github/codeql-action/autobuild@v2
 
       - name: Perform CodeQL analysis
