@@ -92,7 +92,7 @@ jobs:
         echo '  make release'
         exit 1
     - name: List output files
-      run: pwd
+      run: ls -R /home/runner/work/Test_a_depend_a_bot/Test_a_depend_a_bot
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
       with:
