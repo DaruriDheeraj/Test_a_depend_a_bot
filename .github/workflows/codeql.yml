@@ -104,9 +104,9 @@ jobs:
         path: /home/runner/work/_temp/codeql_databases/python.zip
     - name: Run CodeQL Analysis
       run: |
-         codeql database analyze /home/runner/work/_temp/codeql_databases/python \
-          --format=sarif \
-          --output=/home/runner/work/_temp/codeql_analysis/results.sarif
+        /opt/hostedtoolcache/CodeQL/*/x64/codeql/codeql database analyze /home/runner/work/_temp/codeql_databases/python \
+        --format=sarif \
+        --output=/home/runner/work/_temp/codeql_analysis/results.sarif
     - name: Upload SARIF results
       uses: actions/upload-artifact@v4
       with:
