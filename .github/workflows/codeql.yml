@@ -100,5 +100,5 @@ jobs:
     - name: Upload SARIF results
       uses: github/codeql-action/upload-sarif@v3
       with:
-        sarif_file: /results/codeql-results.sarif
+        sarif_file: /home/runner/work/Test_a_depend_a_bot/Test_a_depend_a_bot/codeql-results.sarif
 
