@@ -102,4 +102,13 @@ jobs:
       with:
         name: codeql-database-python
         path: /home/runner/work/_temp/codeql_databases/python.zip
-
+    - name: Run CodeQL Analysis
+      run: |
+         codeql database analyze /home/runner/work/_temp/codeql_databases/python \
+          --format=sarif \
+          --output=/home/runner/work/_temp/codeql_analysis/results.sarif
+    - name: Upload SARIF results
+      uses: actions/upload-artifact@v4
+      with:
+          name: codeql-results-sarif
+          path: /home/runner/work/_temp/codeql_analysis/results.sarif
