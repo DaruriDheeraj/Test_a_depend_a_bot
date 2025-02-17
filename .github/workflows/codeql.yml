@@ -58,6 +58,7 @@ jobs:
       uses: github/codeql-action/init@v3
       with:
         languages: ${{ matrix.language }}
+         echo 'working on sensitive-data'
       #  queries: /home/runner/work/Test_a_depend_a_bot/custom-queries/sensitive-data.ql
         queries: +./custom-queries/sensitive-data.ql
         build-mode: ${{ matrix.build-mode }}
