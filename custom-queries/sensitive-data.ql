@@ -1,12 +1,11 @@
 import python
 
-/**
- * Detects hardcoded sensitive data (API keys, passwords, tokens).
- */
-class SensitivePattern extends Regex {
-  SensitivePattern() { this = /(?i)(apikey|secret|password|token|passwd)\s*[=:]\s*["\'][a-zA-Z0-9-_]+["\']/ }
+class HardcodedCredentialExpr extends Expr {
+  HardcodedCredentialExpr() {
+    this.getType().hasName("str") and
+    this.(Literal).getValue().regexpMatch("(?i)(password|passwd|pwd|secret|token|apikey|api_key|auth|key|private|certificate|cred|jwt|bearer|access)[^\n]*[=:][^\n]*")
+  }
 }
 
-from AssignExpr assign, string value
-where assign.getRValue().toString() = value and value.matches(SensitivePattern())
-select assign, "Possible hardcoded sensitive data: " + value
+from HardcodedCredentialExpr e
+select e, "Potential hardcoded secret or credential detected. Review this value."
