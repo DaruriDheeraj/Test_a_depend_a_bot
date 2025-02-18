@@ -1,6 +1,6 @@
 # WARNING: This script contains hardcoded credentials (for testing only)
 DUMMY_USERNAME = "admin"
-DUMMY_PASSWORD = "password123"  # Weak password example
+DUMMY_PASSWORD = "password124"  # Weak password example
 
 def login(username, password):
     if username == DUMMY_USERNAME and password == DUMMY_PASSWORD:
